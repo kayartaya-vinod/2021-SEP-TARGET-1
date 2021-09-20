@@ -1,0 +1,8 @@
+@startuml
+
+class Employee
+class Department
+
+
+Employee o- Department
+@enduml

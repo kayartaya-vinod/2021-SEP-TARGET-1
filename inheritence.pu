@@ -1,0 +1,13 @@
+@startuml
+
+
+Product <|--  WashingMachine
+Product <|--  MicrowaveOwen
+Product <|--  MobilePhone
+
+MobilePhone <|-- SmartPhone
+
+SmartPhone <|-- Tablet
+
+
+@enduml

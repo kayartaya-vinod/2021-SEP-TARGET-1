@@ -1,0 +1,29 @@
+@startuml
+
+class Emplpoyee {
+    - id: int
+    - name: String
+    - salary: Double
+
+    + consturctors()
+    + getters()
+    + setters()
+
+    + save(): void
+}
+
+class Emplpoyee1 {
+    - id: int
+    - name: String
+    - salary: Double
+
+    + consturctors()
+    + getters()
+    + setters()
+
+    + saveToDatabase(): void
+    + saveAsXml(): void
+    + saveAsJson(): void
+}
+
+@enduml

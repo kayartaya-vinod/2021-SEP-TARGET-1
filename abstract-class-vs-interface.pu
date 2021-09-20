@@ -1,0 +1,45 @@
+@startuml
+
+interface ProductDao{
+    + add(product: Product)
+}
+interface CustomerDao{
+    + add(customer: Customer)
+}
+interface EmployeeDao{
+    + add(employee: Employee)
+}
+
+ProductDao <|... JdbcProductDao
+
+class JdbcProductDao{
+    + add(product: Product)
+}
+
+CustomerDao <|... JdbcCustomerDao
+
+class JdbcCustomerDao{
+    + add(customer: Customer)
+}
+
+EmployeeDao <|... JdbcEmployeeDao
+
+class JdbcEmployeeDao{
+    + add(employee: Employee)
+}
+
+
+abstract class JdbcBaseDao {
+    + add (data: Object)
+}
+
+JdbcBaseDao <|--- JdbcProductDao
+JdbcBaseDao <|--- JdbcCustomerDao
+JdbcBaseDao <|--- JdbcEmployeeDao
+
+ProductDao <|... JpaProductDao
+
+class JpaProductDao{
+    + add(employee: Employee)
+}
+@enduml

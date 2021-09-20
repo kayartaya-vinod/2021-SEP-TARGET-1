@@ -1,0 +1,35 @@
+@startuml
+
+abstract class Employee {
+    - id: int
+    - name: String
+    - salary: Double
+
+    + consturctors()
+    + getters()
+    + setters()
+    + abstract getBonus()
+}
+
+Employee <|--- PermanentEmployee
+Employee <|--- TemporaryEmployee
+
+class PermanentEmployee{
+    + getBonus()
+}
+class TemporaryEmployee{
+    + getBonus()
+}
+
+PermanentEmployee <|--- ClassAEmployee
+PermanentEmployee <|--- ClassBEmployee
+
+class ClassAEmployee{
+    + getBonus()
+}
+
+class ClassBEmployee{
+    + getBonus()
+}
+
+@enduml

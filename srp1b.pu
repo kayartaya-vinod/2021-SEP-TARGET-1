@@ -1,0 +1,37 @@
+@startuml
+
+
+class Employee{
+        - id: int
+    - name: String
+    - salary: Double
+
+    + consturctors()
+    + getters()
+    + setters()
+}
+
+note "Responsibility - Represent employee information" as n1
+n1 ... Employee
+
+interface EmployeePersister{
+    + save(emp: Employee): void
+}
+
+class EmployeeDatabasePersister{
+    + save(emp: Employee): void
+}
+class EmployeeXmlPersister{
+    + save(emp: Employee): void
+}
+class EmployeeJsonPersister{
+    + save(emp: Employee): void
+}
+EmployeePersister <|... EmployeeDatabasePersister
+EmployeePersister <|... EmployeeXmlPersister
+EmployeePersister <|... EmployeeJsonPersister
+
+note "Responsibility - Saving employee data to DB" as n2
+
+n2 ... EmployeeDatabasePersister
+@enduml

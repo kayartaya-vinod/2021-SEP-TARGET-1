@@ -696,4 +696,6 @@ In the application, you may want to change `ContactsDao dao = new ArrayListConta
 
 Is there a better way to get an object of ContactsDao interface?
 
+---
+
 ![](./concepts6.dio.png)

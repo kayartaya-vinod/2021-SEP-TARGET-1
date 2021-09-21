@@ -706,8 +706,6 @@ Is there a better way to get an object of ContactsDao interface?
 
 ![](./images/concepts6.dio.png)
 
----
-
 ![](./images/concepts7.dio.png)
 
 ---

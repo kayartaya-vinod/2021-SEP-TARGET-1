@@ -1,10 +1,6 @@
 # Java bootcamp training for Target - September 2021
 
-## You may contact me here:
-
-vinod@vinod.co
-
-9731424784
+## You may reach me on _vinod@vinod.co_ or _9731424784_
 
 # An example of SOAP request
 

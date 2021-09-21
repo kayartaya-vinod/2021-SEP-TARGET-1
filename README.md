@@ -1,5 +1,11 @@
 # Java bootcamp training for Target - September 2021
 
+## You may contact me here:
+
+vinod@vinod.co
+
+9731424784
+
 # An example of SOAP request
 
 ```xml
@@ -699,3 +705,13 @@ Is there a better way to get an object of ContactsDao interface?
 ---
 
 ![](./concepts6.dio.png)
+
+---
+
+![](./concepts7.dio.png)
+
+---
+
+### Assignment
+
+Implement the _ContactsDao_ interface using JDBC and test the functionalities of the application. Also use the factory method pattern to get an object of _ContactsDao_ in your application.

@@ -24,7 +24,7 @@ vinod@vinod.co
 
 ```
 
-![](./concepts1.dio.png)
+![](./images/concepts1.dio.png)
 
 # Assignments for Day 1
 
@@ -270,7 +270,7 @@ inWords(101);
 
 Call the function in main, multiple times by supplying multiple values and verify the same.
 
-![](./concepts2.dio.png)
+![](./images/concepts2.dio.png)
 
 ## Aggregation (HAS-A)
 
@@ -345,7 +345,7 @@ In the `main()` method of a Program class, create an array of 10 `Shape` referen
 
 ---
 
-![](./concepts3.dio.png)
+![](./images/concepts3.dio.png)
 
 ---
 
@@ -494,7 +494,7 @@ The method should throw a custom exception **InvalidDateException**, in case if 
 
 ---
 
-![](./concepts4.dio.png)
+![](./images/concepts4.dio.png)
 
 ---
 
@@ -563,7 +563,7 @@ Create an implementation for the above interface that uses collections for stori
 
 ---
 
-![](./concepts5.dio.png)
+![](./images/concepts5.dio.png)
 
 ---
 
@@ -704,11 +704,11 @@ Is there a better way to get an object of ContactsDao interface?
 
 ---
 
-![](./concepts6.dio.png)
+![](./images/concepts6.dio.png)
 
 ---
 
-![](./concepts7.dio.png)
+![](./images/concepts7.dio.png)
 
 ---
 

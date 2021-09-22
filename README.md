@@ -709,3 +709,7 @@ Is there a better way to get an object of ContactsDao interface?
 ### Assignment
 
 Implement the _ContactsDao_ interface using JDBC and test the functionalities of the application. Also use the factory method pattern to get an object of _ContactsDao_ in your application.
+
+---
+
+![](./images/concepts8.dio.png)

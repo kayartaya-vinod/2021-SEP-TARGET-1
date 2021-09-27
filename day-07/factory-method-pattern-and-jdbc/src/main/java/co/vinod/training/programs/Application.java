@@ -41,11 +41,53 @@ public class Application {
                     System.out.println("Search by price range");
                     break;
                 case 5:
-                    System.out.println("Update; TBD");
+                    searchAndUpdate();
             }
         }
 
         System.out.println("Bye!");
+    }
+
+    private void searchAndUpdate() {
+        try {
+            int id = KeyboardUtil.getInt("Enter id to search: ");
+            Product p = dao.getById(id);
+            if (p == null) {
+                System.out.println("No product data found for id " + id);
+                return;
+            }
+
+            String input;
+            boolean changed = false;
+
+            System.out.println("Enter product details. Hit ENTER to keep the old value.");
+            input = KeyboardUtil.getString("Enter product name : (" + p.getName() + ") ");
+            if (!input.trim().equals("")) {
+                p.setName(input);
+                changed = true;
+            }
+
+            input = KeyboardUtil.getString("Enter product price : (" + p.getPrice() + ") ");
+            if (!input.trim().equals("")) {
+                p.setPrice(Double.parseDouble(input));
+                changed = true;
+            }
+
+            if (!changed) {
+                System.out.println("You didn't make any changes. Not updating!");
+                return;
+            }
+
+            dao.updateProduct(p);
+            System.out.println("Product data updated successfully!");
+
+        } catch (DaoException e) {
+            System.out.println("There was an error while getting/updating data");
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Only numbers are allowed for id or price.");
+        }
+
     }
 
     void line(char pattern) {
@@ -63,8 +105,7 @@ public class Application {
             Product p = new Product(id, name, price);
             dao.addProduct(p);
             System.out.println("New product added successfully!");
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println("There was a problem while adding the product details.");
             System.out.println(e.getMessage());
         }

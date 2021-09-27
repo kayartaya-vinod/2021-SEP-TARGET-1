@@ -7,6 +7,7 @@ import java.util.List;
 
 public class ArrayListProductDao implements ProductDao{
 
+    public static final String METHOD_NOT_IMPLEMENTED_YET = "Method not implemented yet!";
     private List<Product> list = new ArrayList<>();
 
     public ArrayListProductDao(){
@@ -30,12 +31,12 @@ public class ArrayListProductDao implements ProductDao{
 
     @Override
     public Product getById(Integer id) throws DaoException {
-        throw new DaoException("Method not implemented yet!");
+        throw new DaoException(METHOD_NOT_IMPLEMENTED_YET);
     }
 
     @Override
     public void updateProduct(Product product) throws DaoException {
-        throw new DaoException("Method not implemented yet!");
+        throw new DaoException(METHOD_NOT_IMPLEMENTED_YET);
     }
 
     @Override
@@ -45,6 +46,6 @@ public class ArrayListProductDao implements ProductDao{
 
     @Override
     public List<Product> getByPriceRange(Double min, Double max) throws DaoException {
-        throw new DaoException("Method not implemented yet!");
+        throw new DaoException(METHOD_NOT_IMPLEMENTED_YET);
     }
 }

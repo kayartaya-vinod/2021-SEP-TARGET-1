@@ -26,7 +26,7 @@ public final class DaoFactory {
             case "csv":
                 // dao= new CsvProductDao(); break;
             case "jpa":
-                // dao= new JpaProductDao(); break;
+                 dao= new JpaProductDao(); break;
             default:
                 throw new DaoException("Request for unknown type of implementation for ProductDao");
         }

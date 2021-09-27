@@ -713,3 +713,17 @@ Implement the _ContactsDao_ interface using JDBC and test the functionalities of
 ---
 
 ![](./images/concepts8.dio.png)
+
+---
+
+### To start sonarqube server:
+
+```
+docker run -d --name sonar-server -p 9000:9000 sonarqube
+```
+
+And visit http://localhost:9000
+
+First time, you should login with username `admin` and password `admin` and optionally change the password on first login.
+
+![](./images/concepts10.dio.png)

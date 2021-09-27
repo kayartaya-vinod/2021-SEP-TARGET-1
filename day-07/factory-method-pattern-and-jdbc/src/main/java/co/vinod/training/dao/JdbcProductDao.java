@@ -3,10 +3,7 @@ package co.vinod.training.dao;
 import co.vinod.training.entity.Product;
 import co.vinod.training.utils.DbUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,20 +19,50 @@ public class JdbcProductDao implements ProductDao {
             stmt.setString(2, product.getName());
             stmt.setDouble(3, product.getPrice());
             stmt.execute();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new DaoException(e); // wrapping "e" with a new instance of DaoException
         }
     }
 
     @Override
     public Product getById(Integer id) throws DaoException {
-        throw new DaoException("Method not implemented using JDBC yet!");
+        String sql = "select * from products where id = ?";
+        try (
+                Connection conn = DbUtil.createConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql);
+        ) {
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    Product p = new Product();
+                    p.setId(id);
+                    p.setName(rs.getString("name"));
+                    p.setPrice(rs.getDouble("price"));
+                    return p;
+                }
+            }
+        } catch (Exception e) {
+            throw new DaoException(e);
+        }
+        return null;
     }
 
     @Override
     public void updateProduct(Product product) throws DaoException {
-        throw new DaoException("Method not implemented using JDBC yet!");
+        String sql = "update products set name=?, price=? where id=?";
+        try (
+                Connection conn = DbUtil.createConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql);
+        ) {
+            stmt.setString(1, product.getName());
+            stmt.setDouble(2, product.getPrice());
+            stmt.setInt(3, product.getId());
+            if (stmt.executeUpdate() == 0) {
+                throw new DaoException("No data found for id " + product.getId());
+            }
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
     }
 
     @Override

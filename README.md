@@ -727,3 +727,5 @@ And visit http://localhost:9000
 First time, you should login with username `admin` and password `admin` and optionally change the password on first login.
 
 ![](./images/concepts10.dio.png)
+
+![](./images/concepts11.dio.png)

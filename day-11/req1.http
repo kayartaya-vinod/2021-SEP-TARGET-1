@@ -1,0 +1,12 @@
+GET /webapp-demo/hello
+Host: localhost:8080
+
+###
+
+GET /webapp-demo/numbers?from=200&to=250
+Host: localhost:8080
+
+###
+
+GET /?s=iron
+Host: omdbapi.com

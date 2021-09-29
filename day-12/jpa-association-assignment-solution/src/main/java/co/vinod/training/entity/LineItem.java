@@ -1,11 +1,13 @@
 package co.vinod.training.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "ORDER_DETAILS")
 public class LineItem implements Serializable {
@@ -23,4 +25,13 @@ public class LineItem implements Serializable {
     @ManyToOne
     @JoinColumn(name = "PRODUCT_ID", insertable = false, updatable = false)
     private Product product;
+
+    @ManyToOne
+    @JoinColumn(name = "ORDER_ID", insertable = false, updatable = false)
+    private Order order;
+
+    public LineItem(Integer oderId, Integer productId) {
+        this.oderId = oderId;
+        this.productId = productId;
+    }
 }

@@ -3,6 +3,7 @@ package co.vinod.training.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -29,5 +30,9 @@ public class Product {
     @ManyToOne
     @JoinColumn(name="CATEGORY_ID")
     private Category category;
+
+    @OneToMany
+    @JoinColumn(name="PRODUCT_ID")
+    private List<LineItem> lineItems;
 
 }

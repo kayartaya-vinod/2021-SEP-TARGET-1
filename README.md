@@ -739,3 +739,58 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#successful_responses
 UDEMY COURSE LINK:
 
 https://www.udemy.com/course/develop-java-mvc-web-apps-using-mybatis-servlets-and-jsp/?couponCode=76916B7065333B26361A
+
+# ReSTful (Web) Services or APIs
+
+````java
+class Address {
+    street, city, state;
+}
+class Customer {
+    private id, name, address, email;
+}
+````
+
+```xml
+<customer id="123">
+    <name>Vinod</name>
+    <email>vinod@viond.co</email>
+    <address>
+        <street>1st crs 1st main</street>
+        <city>Bangalore</city>
+        <state>Karnataka</state>
+    </address>
+</customer>
+
+```
+
+
+## ReST --> Representational State Transfer
+
+1. Transfer (exchange between client/server) of state (information) in different representations (formats)
+1. Different formats/ representations --> XML, JSON (most commonly used today), CSV, plain text, html, etc.
+1. Client always initiates the request
+1. Client can negotiate what representation of data is being exchanged using HTTP headers - (1) Accept (2) Content-Type
+1. State (a.k.a resource) is accessible using a uniform address (URI/URL)
+1. State can be accessed/or mutated by the client using verbs - GET, POST, PUT, DELETE, PATCH
+
+
+## REST is based on 6 different constraints - defined by Roy fielding's work on this
+
+1. Uniform interface - We use a URI to represent a resource, and different verbs to access/mutate the same
+    1. http://example.com/api/products --> resource representing products
+    1. http://example.com/api/products/12 --> resource representing a specific product
+    1. http://example.com/api/products/12/supplier --> resource representing the supplier who supplied product 12
+    1. GET request on http://example.com/api/products/12 should retrieve the state (information) represented by product 12
+    1. PUT request on http://example.com/api/products/12 should update the state of product 12 (data will be sent as payload)
+    1. DELETE request on http://example.com/api/products/12 should delete the resource who's id is 12
+    1. GET request on http://example.com/api/products/ should get all products
+    1. POST request on http://example.com/api/products should add a new resource (data will be sent as payload)
+    1. GET request on http://example.com/api/products/12 with header Accept="application/xml" will get XML representation
+    1. GET request on http://example.com/api/products/12 with header Accept="application/json" will get JSON representation
+1. Stateless - server doesn't remember the client after the request/response is done
+    1. HTTP protocol by nature is a stateless
+1. Client-server
+1. Layered system
+1. Cacheable
+1. Code on demand (optional) - Google maps api can give JSON data for given coords, but also can give code to draw the map on your app

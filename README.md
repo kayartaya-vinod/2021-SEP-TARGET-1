@@ -740,16 +740,18 @@ UDEMY COURSE LINK:
 
 https://www.udemy.com/course/develop-java-mvc-web-apps-using-mybatis-servlets-and-jsp/?couponCode=76916B7065333B26361A
 
+![](./images/concepts13.dio.png)
+
 # ReSTful (Web) Services or APIs
 
-````java
+```java
 class Address {
     street, city, state;
 }
 class Customer {
     private id, name, address, email;
 }
-````
+```
 
 ```xml
 <customer id="123">
@@ -764,7 +766,6 @@ class Customer {
 
 ```
 
-
 ## ReST --> Representational State Transfer
 
 1. Transfer (exchange between client/server) of state (information) in different representations (formats)
@@ -773,7 +774,6 @@ class Customer {
 1. Client can negotiate what representation of data is being exchanged using HTTP headers - (1) Accept (2) Content-Type
 1. State (a.k.a resource) is accessible using a uniform address (URI/URL)
 1. State can be accessed/or mutated by the client using verbs - GET, POST, PUT, DELETE, PATCH
-
 
 ## REST is based on 6 different constraints - defined by Roy fielding's work on this
 

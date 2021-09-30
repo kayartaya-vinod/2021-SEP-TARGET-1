@@ -1,0 +1,55 @@
+GET /api/products/45
+Host: localhost:9090
+Accept: application/json
+
+###
+GET /api/products/45
+Host: localhost:9090
+Accept: application/xml
+
+###
+
+GET /api/products/45
+Host: localhost:9090
+Accept: text/plain
+
+###
+
+# expecting 1st page
+GET /api/products
+Host: localhost:9090
+Accept: application/xml
+
+###
+
+# expecting 3rd page (assuming page size is 10)
+GET /api/products?_page=3
+Host: localhost:9090
+Accept: application/json
+
+###
+# expecting 3rd page (assuming page size is 15)
+GET /api/products?_page=3&_limit=15
+Host: localhost:9090
+Accept: application/json
+
+###
+
+GET /api/products/filter?discontinued=true
+Host: localhost:9090
+Accept: application/json
+
+###
+
+GET /api/products/filter?discontinued=false
+Host: localhost:9090
+Accept: application/json
+
+###
+
+GET /api/products/filter?min=100&max=1000
+Host: localhost:9090
+Accept: application/json
+
+###
+

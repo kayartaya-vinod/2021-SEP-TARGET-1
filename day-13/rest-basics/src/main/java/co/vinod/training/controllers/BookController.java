@@ -16,7 +16,7 @@ public class BookController {
 
     // dependency
     // Spring container automatically injects a suitable object of (1) either with matching name
-    // or (2) with matching datatype
+    // or (2) with matching datatype. If not found, throws error.
     @Autowired
     BookService bookService;
 

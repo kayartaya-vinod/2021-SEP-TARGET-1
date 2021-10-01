@@ -16,6 +16,11 @@ import java.util.Date;
 public class ApiError {
     private HttpStatus status;
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", shape = JsonFormat.Shape.STRING)
-    private Date timestamp;
+    private Date timestamp = new Date();
     private String message;
+
+    public ApiError(HttpStatus status, String message) {
+        this.status = status;
+        this.message = message;
+    }
 }

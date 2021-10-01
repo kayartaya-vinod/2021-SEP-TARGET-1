@@ -5,9 +5,9 @@ spring:
   application:
     name: PRODUCT-SERVICE
   datasource:
-    url: jdbc:mysql://localhost/northwind
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/northwind
     username: root
-    password: Welcome#123
+    password: ${MYSQL_PASSWORD:Welcome#123}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:

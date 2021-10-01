@@ -794,3 +794,5 @@ class Customer {
 1. Layered system
 1. Cacheable
 1. Code on demand (optional) - Google maps api can give JSON data for given coords, but also can give code to draw the map on your app
+
+![](./images/concepts14.dio.png)

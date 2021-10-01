@@ -18,7 +18,7 @@ Accept: text/plain
 # expecting 1st page
 GET /api/products
 Host: localhost:9090
-Accept: application/xml
+Accept: application/json
 
 ###
 
@@ -53,3 +53,45 @@ Accept: application/json
 
 ###
 
+POST /api/products
+Host: localhost:9090
+Accept: application/json
+Content-Type: application/json
+
+{
+    "productName": "Vanilla Milkshake",
+    "categoryId": 1,
+    "supplierId": 1,
+    "quantityPerUnit": "10 boxes x 20 tetrapacks",
+    "unitPrice": 2.5,
+    "unitsInStock": 20,
+    "unitsOnOrder": 0,
+    "reorderLevel": 5,
+    "discontinued": 0
+}
+
+#### update a specific product
+PUT /api/products/782
+Host: localhost:9090
+Accept: application/json
+Content-Type: application/json
+
+{
+    "productId": 55,
+    "productName": "Vanilla Milkshake",
+    "categoryId": 1,
+    "supplierId": 1,
+    "quantityPerUnit": "10 boxes x 20 tetrapacks",
+    "unitPrice": 3.5,
+    "unitsInStock": 12,
+    "unitsOnOrder": 2,
+    "reorderLevel": 5,
+    "discontinued": 0
+}
+
+
+###
+
+DELETE /api/products/78
+Host: localhost:9090
+Accept: application/json

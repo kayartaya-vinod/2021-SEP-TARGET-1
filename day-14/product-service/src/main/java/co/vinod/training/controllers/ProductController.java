@@ -16,7 +16,7 @@ public class ProductController {
 
     // dependency
     @Autowired // instruct spring to find a suitable object of type ProductService and assign the same
-            ProductService service;
+    ProductService service;
 
     @GetMapping(path = "/{id}", produces = {"application/json", "application/xml"})
     public ResponseEntity<Object> handleGetProductById(@PathVariable Integer id) {
@@ -55,4 +55,43 @@ public class ProductController {
     public Iterable<Product> handleGetProductsInPriceRange(@RequestParam Double min, @RequestParam Double max) {
         return service.getProductsBetween(min, max);
     }
+
+    @PostMapping(consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Object> handleAddNewProduct(@RequestBody Product product) { // use DTO instead of Entity class
+        try {
+            Product p = service.addNewProduct(product);
+            return ResponseEntity.ok(p);
+        } catch (Exception e) {
+            ApiError ai = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ai);
+        }
+    }
+
+    @PutMapping(path="/{id}", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Object> handleUpdateProduct(@PathVariable Integer id, @RequestBody Product product) {
+        try {
+            product.setProductId(id); // product to be updated is identified using the path variable
+            Product p = service.updateProduct(product);
+            return ResponseEntity.ok(p);
+        } catch (Exception e) {
+            ApiError ai = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ai);
+        }
+    }
+
+
+    @DeleteMapping(path="/{id}", produces = "application/json")
+    public ResponseEntity<Object> handleDeleteProduct(@PathVariable Integer id){
+        try {
+            Product p = service.deleteProduct(id);
+            return ResponseEntity.ok(p);
+        } catch (Exception e) {
+            ApiError ai = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ai);
+        }
+    }
+
+
+
+
 }

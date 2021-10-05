@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+    mysql8server:
+        container_name: mysql8server
+        ports:
+            - '3306:3306'
+            - '33060:33060'
+        environment:
+            - MYSQL_ROOT_PASSWORD=Welcome#123
+        volumes:
+            - 'mysql_data:/var/lib/mysql'
+        restart: always
+        image: 'mysql:latest'
+
+    customer-service: # docker run
+        container_name: customer-service # --name=CUSTOMER_SERVICE
+        ports:
+            - '8080:8080' # -p 8080:8080
+        restart: always
+        depends_on:
+            - mysql8server
+        environment:
+            - MYSQL_HOST=mysql8server
+        image: 'customer-service:latest'
+
+volumes:
+    mysql_data:
+        name: mysql_data
+        driver: local

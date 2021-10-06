@@ -19,7 +19,7 @@ spring:
 
                 - id: employeeService
                   predicates:
-                      - Path=/api/employee/**
+                      - Path=/api/employees/**
                   uri: lb://EMPLOYEE-SERVICE/
 eureka:
     client:

@@ -1,39 +1,40 @@
 server:
-  port: ${APP_PORT:9090}
+    port: ${APP_PORT:9090}
 
 spring:
-  application:
-    name: EMPLOYEE-SERVICE
-  datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/northwind
-    username: root
-    password: ${MYSQL_PASSWORD:Welcome#123}
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    application:
+        name: EMPLOYEE-SERVICE
+    datasource:
+        url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/northwind
+        username: root
+        password: ${MYSQL_PASSWORD:Welcome#123}
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+        hibernate:
+            ddl-auto: update
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
 logging:
-  level:
-    org:
-      hibernate: OFF
-      springframework: INFO
-    co:
-      vinod: DEBUG
+    level:
+        org:
+            hibernate: OFF
+            springframework: INFO
+        co:
+            vinod: DEBUG
 
 management:
-  endpoints:
-    web:
-      exposure:
-        include: "health,info,beans,metrics,env,heapdump,mappings"
+    endpoints:
+        web:
+            exposure:
+                include: 'health,info,beans,metrics,env,heapdump,mappings'
 
 eureka:
-  client:
-    fetchRegistry: true
-    registerWithEureka: true
-    serviceUrl:
-      defaultZone: http://${EUREKA_SERVER_HOST:localhost}:8761/eureka
-  instance:
-    hostname: localhost
+    client:
+        registerWithEureka: true
+        fetchRegistry: true
+        serviceUrl:
+            defaultZone: http://${EUREKA_SERVER_HOST:localhost}:8761/eureka/
+    instance:
+        hostname: ${EUREKA_SERVER_HOST:localhost}
+        prefer-ip-address: true

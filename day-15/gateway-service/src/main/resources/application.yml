@@ -7,24 +7,26 @@ spring:
     cloud:
         gateway:
             routes:
-                - id: customerService
-                  predicates:
-                      - Path=/api/customers/**
-                  uri: lb://CUSTOMER-SERVICE/
-                - id: employeeService
-                  predicates:
-                      - Path=/api/employees/**
-                  uri: lb://EMPLOYEE-SERVICE/
                 - id: productService
                   predicates:
                       - Path=/api/products/**
                   uri: lb://PRODUCT-SERVICE/
 
+                - id: customerService
+                  predicates:
+                      - Path=/api/customers/**
+                  uri: lb://CUSTOMER-SERVICE/
+
+                - id: employeeService
+                  predicates:
+                      - Path=/api/employee/**
+                  uri: lb://EMPLOYEE-SERVICE/
 eureka:
-  client:
-    fetchRegistry: true
-    registerWithEureka: true
-    serviceUrl:
-      defaultZone: http://${EUREKA_SERVER_HOST:localhost}:8761/eureka
-  instance:
-    hostname: localhost
+    client:
+        registerWithEureka: true
+        fetchRegistry: true
+        serviceUrl:
+            defaultZone: http://${EUREKA_SERVER_HOST:localhost}:8761/eureka/
+    instance:
+        hostname: ${EUREKA_SERVER_HOST:localhost}
+        prefer-ip-address: true

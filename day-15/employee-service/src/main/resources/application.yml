@@ -1,9 +1,9 @@
 server:
-  port: ${SERVER_PORT:8080}
+  port: ${APP_PORT:9090}
 
 spring:
   application:
-    name: CUSTOMER-SERVICE
+    name: EMPLOYEE-SERVICE
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/northwind
     username: root
@@ -11,7 +11,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
@@ -19,7 +19,7 @@ logging:
   level:
     org:
       hibernate: OFF
-      springframework: DEBUG
+      springframework: INFO
     co:
       vinod: DEBUG
 
@@ -27,12 +27,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "health,info,beans,startup,httptrace,metrics,env"
-  endpoint:
-    httptrace:
-      enabled: true
-    startup:
-      enabled: true
+        include: "health,info,beans,metrics,env,heapdump,mappings"
 
 eureka:
   client:

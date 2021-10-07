@@ -10,14 +10,18 @@ services:
             - MYSQL_ROOT_PASSWORD=Welcome#123
         volumes:
             - 'mysql_data:/var/lib/mysql'
-        restart: always
         image: 'mysql:latest'
+
+    eureka-service:
+        container_name: eureka-service
+        ports:
+            - '8761:8761'
+        image: 'eureka-service:latest'
 
     customer-service: # docker run
         container_name: customer-service # --name=CUSTOMER_SERVICE
         ports:
             - '8080:8080' # -p 8080:8080
-        restart: always
         depends_on:
             - mysql8server
             - eureka-service
@@ -30,7 +34,6 @@ services:
         container_name: employee-service
         ports:
             - '8081:8081'
-        restart: always
         depends_on:
             - mysql8server
             - eureka-service
@@ -44,7 +47,6 @@ services:
         container_name: product-service
         ports:
             - '8082:8082'
-        restart: always
         depends_on:
             - mysql8server
             - eureka-service
@@ -54,25 +56,28 @@ services:
             - EUREKA_SERVER_HOST=eureka-service
         image: 'product-service:latest'
 
-    gateway-service:
-        container_name: gateway-service
+    product-service-2:
+        container_name: product-service-2
         ports:
-            - '5000:5000'
-        restart: always
+            - '8083:8083'
         depends_on:
             - mysql8server
             - eureka-service
         environment:
             - MYSQL_HOST=mysql8server
+            - APP_PORT=8083
+            - EUREKA_SERVER_HOST=eureka-service
+        image: 'product-service:latest'
+
+    gateway-service:
+        container_name: gateway-service
+        ports:
+            - '5000:5000'
+        depends_on:
+            - eureka-service
+        environment:
             - EUREKA_SERVER_HOST=eureka-service
         image: 'gateway-service:latest'
-
-    eureka-service:
-        container_name: eureka-service
-        ports:
-            - '8761:8761'
-        restart: always
-        image: 'eureka-service:latest'
 
 volumes:
     mysql_data:

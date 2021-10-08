@@ -69,6 +69,23 @@ services:
             - EUREKA_SERVER_HOST=eureka-service
         image: 'product-service:latest'
 
+    order-service:
+        container_name: order-service
+        ports:
+            - '8084:8084'
+        depends_on:
+            - mysql8server
+            - eureka-service
+        environment:
+            - MYSQL_HOST=mysql8server
+            - SERVER_PORT=8084
+            - EUREKA_SERVER_HOST=eureka-service
+            - CUSTOMER_SERVICE_URL=customer-service # service name
+            - CUSTOMER_SERVICE_PORT=8080
+            - PRODUCT_SERVICE_URL=product-service # service name
+            - PRODUCT_SERVICE_PORT=8082
+        image: 'order-service:latest'
+
     gateway-service:
         container_name: gateway-service
         ports:

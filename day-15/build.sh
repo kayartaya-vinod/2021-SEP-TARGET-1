@@ -26,3 +26,4 @@ mvn clean package -DskipTests
 docker build -t eureka-service:latest .
 cd ..
 
+sh ./order-sevice/build.sh

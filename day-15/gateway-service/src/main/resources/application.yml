@@ -21,6 +21,11 @@ spring:
                   predicates:
                       - Path=/api/employees/**
                   uri: lb://EMPLOYEE-SERVICE/
+
+                - id: orderService
+                  predicates:
+                      - Path=/api/orders/**
+                  uri: lb://ORDER-SERVICE/
 eureka:
     client:
         registerWithEureka: true

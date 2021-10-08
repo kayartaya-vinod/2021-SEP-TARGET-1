@@ -1,0 +1,19 @@
+server:
+  port: ${APP_PORT:8080}
+
+spring:
+  application:
+    name: HELLO-SERVICE
+
+logging:
+  level:
+    org:
+      springframework: DEBUG
+    co:
+      vinod: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
